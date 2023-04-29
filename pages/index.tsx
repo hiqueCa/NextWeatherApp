@@ -1,12 +1,13 @@
+import React from "react";
 import { useState } from "react";
 
-function Header({ title }) {
+function Header({ title }: { title: string }): React.ReactElement {
   return <h1>{title ? title : "Default title"}</h1>;
 }
 
-export default function HomePage() {
+export default function HomePage(): React.ReactElement {
   const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"];
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState<number>(0);
 
   function handleClick() {
     setLikes(likes + 1);
