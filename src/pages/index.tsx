@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import SearchBar from "../components/search-bar";
 
 function Header({ title }: { title: string }): React.ReactElement {
   return <h1>{title ? title : "Default title"}</h1>;
@@ -16,6 +17,7 @@ export default function HomePage(): React.ReactElement {
   return (
     <div>
       <Header title="Develop. Preview. Ship. 🚀" />
+      <SearchBar />
       <ul>
         {names.map((name) => (
           <li key={name}>{name}</li>
