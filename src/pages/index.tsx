@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../components/search-bar/search-bar.component";
 
-function Header({ title }: { title: string }): React.ReactElement {
-  return <h1>{title ? title : "Default title"}</h1>;
-}
-
 export default function WeatherApp(): React.ReactElement {
+  const [cityData, setCityData] = useState(null);
+
   return (
     <div>
-      <SearchBar />
+      <SearchBar onInputChange={(cityData: any) => setCityData(cityData)} />
+      <div>{cityData && JSON.stringify(cityData)}</div>
     </div>
   );
 }
