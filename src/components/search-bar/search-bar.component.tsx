@@ -1,17 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { fetchCurrentWeather } from "../../free-weather-api-client/free-weather-api-client";
 
-const SearchBar = (): React.ReactElement => {
+interface ISearchBar {
+  onInputChange: (cityData: any) => void;
+}
+
+const SearchBar = ({ onInputChange }: ISearchBar): React.ReactElement => {
   const [searchInput, setSearchInput] = useState("");
-  const handleSearchInputChange = (event: React.SyntheticEvent): void => {
-    let target = event.target as HTMLInputElement;
-    setSearchInput(target.value);
-  };
+
+  useEffect(() => {
+    if (searchInput !== "") {
+      const fetchData = setTimeout(async () => {
+        const requestJson = await fetchCurrentWeather(searchInput);
+        onInputChange(requestJson);
+      }, 2000);
+
+      return () => clearTimeout(fetchData);
+    }
+  }, [searchInput]);
 
   return (
     <input
       type="text"
       placeholder="Search for a city here"
-      onChange={handleSearchInputChange}
+      onChange={(event) => setSearchInput(event.target.value)}
       value={searchInput}
     />
   );
