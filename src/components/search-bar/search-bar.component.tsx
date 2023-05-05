@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchCurrentWeather } from "../../free-weather-api-client/free-weather-api-client";
+import styles from "../search-bar/search-bar.module.scss";
 
 interface ISearchBar {
   onInputChange: (cityData: any) => void;
@@ -25,6 +26,7 @@ const SearchBar = ({ onInputChange }: ISearchBar): React.ReactElement => {
       placeholder="Search for a city here"
       onChange={(event) => setSearchInput(event.target.value)}
       value={searchInput}
+      className={styles.searchBar}
     />
   );
 };
