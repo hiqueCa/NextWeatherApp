@@ -1,0 +1,26 @@
+$base-padding: 16px;
+$text-color: white;
+
+.cityBasicsCard {
+  background-color: black;
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+
+  div {
+    padding-left: $base-padding;
+  }
+
+  img {
+    padding-right: $base-padding;
+  }
+
+  h2 {
+    color: $text-color;
+  }
+
+  h1 {
+    color: $text-color;
+  }
+}
