@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 
 type WeatherConditionType = {
-  altText: string;
-  imgUrl: string;
+  altText: string | undefined;
+  imgUrl: string | undefined;
 };
 
 interface ICityBasicsCard {

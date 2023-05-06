@@ -2,10 +2,21 @@ import React, { useState } from "react";
 import SearchBar from "../components/search-bar/search-bar.component";
 import CityBasicsCard from "../components/city-basics-card/city-basics-card.component";
 
-export default function WeatherApp(): React.ReactElement {
-  const [cityData, setCityData] = useState(null);
+type CityDataType = {
+  location: {
+    name: string;
+  };
+  current: {
+    temp_c: string;
+    condition: {
+      text: string;
+      icon: string;
+    };
+  };
+};
 
-  console.log(cityData);
+export default function WeatherApp(): React.ReactElement {
+  const [cityData, setCityData] = useState<CityDataType>();
 
   return (
     <div>
