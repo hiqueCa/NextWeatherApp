@@ -1,4 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
+import styles from "./city-basics-card.module.scss";
+import parseTemperatureInCelsius from "../../utils/parse-temperature-in-celsius";
 
 type WeatherConditionType = {
   altText: string | undefined;
@@ -16,18 +18,20 @@ interface ICityBasicsCard {
 const CityBasicsCard = ({
   cityBasicsData,
 }: ICityBasicsCard): React.ReactElement => {
+  const formattedTemperature = parseTemperatureInCelsius(cityBasicsData?.tempC);
+
   return (
-    <Fragment>
+    <div className={styles.cityBasicsCard}>
       <div>
         <h2>{cityBasicsData?.name}</h2>
-        <h1>{cityBasicsData?.tempC}</h1>
+        <h1>{formattedTemperature}</h1>
       </div>
 
       <img
         alt={cityBasicsData?.condition.altText}
         src={cityBasicsData?.condition.imgUrl}
       />
-    </Fragment>
+    </div>
   );
 };
 
