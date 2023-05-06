@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import SearchBar from "../components/search-bar/search-bar.component";
-import CityBasicsCard from "../components/city-basics-card/city-basics-card.component";
+import SearchBar from "../../components/search-bar/search-bar.component";
+import CityBasicsCard from "../../components/city-basics-card/city-basics-card.component";
+import styles from "./index.module.scss";
 
 type CityDataType = {
   location: {
@@ -19,7 +20,7 @@ export default function WeatherApp(): React.ReactElement {
   const [cityData, setCityData] = useState<CityDataType>();
 
   return (
-    <div>
+    <div className={styles.index}>
       <SearchBar onInputChange={(cityData: any) => setCityData(cityData)} />
       <CityBasicsCard
         cityBasicsData={{
